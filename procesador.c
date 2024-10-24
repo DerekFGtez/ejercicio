@@ -3,37 +3,45 @@
 #include <string.h>
 #include "procesador.h"
 
-void init_processor(Processor *cpu)
-{
-    memset(cpu->memory, 0, MEM_SIZE * sizeof(int));
-
-    /*cpu->registers[0] = 0;
-    cpu->registers[1] = 0;*/
-
-    memset(cpu->registers, 0, NUM_REGISTERS * sizeof(int));
-
-    /*cpu->flags[ZF] = false;
-    cpu->flags[NF] = false;*/
-
-    memset(cpu->flags, 0, NUM_FLAGS * sizeof(int));    
-
+void init_processor(Processor *cpu) {
     cpu->PC = 0;
+    for (int i=0; i < NUM_REGISTERS; i++) {
+        cpu->registers[i] = 0;
+    }
+
+    for (int i=0; i < NUM_FLAGS; i++){
+        cpu->flags[i] = 0;
+    }
+
+    memset(cpu->code_memory, 0, sizeof(cpu->code_memory));
+    memset(cpu->memory, 0, MEM_SIZE);
 }
 
-void load_program(Processor *cpu, const char *filename)
-{
+void load_program(Processor *cpu, const char *filename) {
     FILE *file = fopen(filename, "r");
-
-    if (file == NULL)
-    {
-        printf("Error al abrir el archivo\n");
+    if (!file){
+        fprintf(stderr, "Error: El archivo no se pudo abrir  %s\n", filename);
         exit(1);
     }
 
-    int i = 0;
+    int opcode, operando1, operando2;
+    int instruction_count = 0;
 
-    while (fscanf(file, "%s %c %s", cpu->code_memory[i].inst, &cpu->code_memory[i].op1, &cpu->code_memory[i].op2) != EOF && i < MAX_INSTRUCTIONS)
-        i++;
+    while (fscanf(file, %d %d  %d, &opcode, &operando1; &operando2) == 3) {
+        if (instruction_count >= MAX MAX_INSTRUCTIONS) {
+            fprintf(stderr, "Error: Son demasiadas instrucciones para el archivo\n");
+            break;
+        }
+        cpu->code_memory[instruction_count].opcode = opcode;
+        cpu->code_memory[instruction_count].operando1 = operando1;
+        cpu->code_memory[instruction_count].operando2 = operando2;
+        instruction_count++;
+    }
+    fclose(file);
+}
 
-    fclose(file); //MIARCHIVO
-} 
+void update_flags(Processor *cpu, int result){
+    cpu->flags[ZF] = (result == 0) ? 1 : 0;
+    cpu->flags[NF] = (result < 0) ? 1 : 0;
+}
+//archivo
