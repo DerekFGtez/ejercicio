@@ -19,3 +19,14 @@ void init_processor(Processor *cpu)
 
     cpu->PC = 0;
 }
+
+void load_program(Processor *cpu, const char *filename)
+{
+    FILE *file = fopen(filename, "r");
+
+    if (file == NULL)
+    {
+        printf("Error al abrir el archivo\n");
+        exit(1);
+    }
+}
