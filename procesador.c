@@ -30,6 +30,10 @@ void load_program(Processor *cpu, const char *filename)
         exit(1);
     }
 
-    //hola tonotos //adios tonotos 
-    //me voy a dar de baja
+    int i = 0;
+
+    while (fscanf(file, "%s %c %s", cpu->code_memory[i].inst, &cpu->code_memory[i].op1, &cpu->code_memory[i].op2) != EOF)
+        i++;
+
+    fclose(file);
 }
