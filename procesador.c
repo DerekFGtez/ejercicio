@@ -32,7 +32,7 @@ void load_program(Processor *cpu, const char *filename)
 
     int i = 0;
 
-    while (fscanf(file, "%s %c %s", cpu->code_memory[i].inst, &cpu->code_memory[i].op1, &cpu->code_memory[i].op2) != EOF)
+    while (fscanf(file, "%s %c %s", cpu->code_memory[i].inst, &cpu->code_memory[i].op1, &cpu->code_memory[i].op2) != EOF && i < MAX_INSTRUCTIONS)
         i++;
 
     fclose(file);
