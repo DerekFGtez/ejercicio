@@ -30,5 +30,5 @@ void load_program(Processor *cpu, const char *filename)
         exit(1);
     }
 
-    //hola tonotos //adios tonotos 
+    //hola tonotos //adios universidad hola narcotrafico 
 }
