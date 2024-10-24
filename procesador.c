@@ -29,4 +29,6 @@ void load_program(Processor *cpu, const char *filename)
         printf("Error al abrir el archivo\n");
         exit(1);
     }
+
+    //hola tonotos
 }
