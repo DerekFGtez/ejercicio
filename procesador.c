@@ -31,4 +31,5 @@ void load_program(Processor *cpu, const char *filename)
     }
 
     //hola tonotos //adios tonotos 
+    //me voy a dar de baja
 }
