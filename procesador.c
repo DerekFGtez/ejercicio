@@ -35,7 +35,5 @@ void load_program(Processor *cpu, const char *filename)
     while (fscanf(file, "%s %c %s", cpu->code_memory[i].inst, &cpu->code_memory[i].op1, &cpu->code_memory[i].op2) != EOF && i < MAX_INSTRUCTIONS)
         i++;
 
-    //hola mundo
-
-    fclose(file);
-}
+    fclose(file); //MIARCHIVO
+} 
