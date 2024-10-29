@@ -1,0 +1,11 @@
+MOV A 10    ; Cargar 10 en el registro A
+MOV B 5     ; Cargar 5 en el registro B
+SUB A 5	    ; Restar 5 a A
+JZ 7        ; Si A es 0, salta a la línea 7
+SUB B 5     ; Restar 5 a B
+JN 8        ; Si B es negativo, salta a la línea 8
+JMP 2       ; Saltar a la línea 2 (crea un bucle)
+MOV A 0     ; Establecer A en 0
+MOV B -1    ; Establecer B en -1
+LOAD A 10   ; Carga lo que esta en la dirección de memoria 10 a A
+STORE A 2   ; Almacena lo que tiene el registro A en la dirección de memoria 2
