@@ -11,7 +11,7 @@
 typedef struct {
     char inst[6];
     char op1;
-    char op2;
+    int op2;
 } Instruction;
 
 // Estructura que representa el procesador
