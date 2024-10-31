@@ -8,18 +8,23 @@
 #define ZF 0 // Zero Flag
 #define NF 1 // Negative Flag
 
-typedef struct {
+extern FILE *output_file; // Declaración del archivo de salida
+
+typedef struct
+{
     char inst[6];
     char op1;
     int op2;
 } Instruction;
 
 // Estructura que representa el procesador
-typedef struct {
+typedef struct
+{
     int memory[MEM_SIZE];
     int registers[NUM_REGISTERS];
     bool flags[NUM_FLAGS];
     int PC; // Contador de programa.
+    int total_instructions;
     Instruction code_memory[MAX_INSTRUCTIONS]; // Memoria de instrucciones
 } Processor;
 
