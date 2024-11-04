@@ -24,14 +24,15 @@ typedef struct
     int registers[NUM_REGISTERS];
     bool flags[NUM_FLAGS];
     int PC; // Contador de programa.
-    int total_instructions;
+    int loaded_instructions;
+    int total_instructions; //Una última variable extra para imprimir el número total de instrucciones ejecutadas
     Instruction code_memory[MAX_INSTRUCTIONS]; // Memoria de instrucciones
 } Processor;
 
 // Funciones del procesador
 void init_processor(Processor *cpu);
 void load_program(Processor *cpu, const char *filename);
-void update_flags(Processor *cpu, int result);
+void update_flags(Processor *cpu, int result[2]);
 void alu_and_control_unity(Processor *cpu);
 void print(Processor *cpu);
 void fprint(Processor *cpu);
